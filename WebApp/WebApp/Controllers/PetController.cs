@@ -14,7 +14,34 @@ public class PetController : ControllerBase
         new Pet {IdPet = 2, PetName = "Kajtek", HairColor = "Brazowy", PetCategory = "Dog", Weight = 30.0},
         new Pet {IdPet = 3, PetName = "Wargas", HairColor = "Black", PetCategory = "Dog", Weight = 45.0}
     };
-
+    
+    private static List<Visit> _visits = new()
+    {
+        new Visit { VisitDate = "24-10-2003", VisPet = _pets[0], VisitCost = 100.0, VisitDescription = "Everthings good"}
+    };
+    
+    // [HttpGet]
+    // public IActionResult GetVisit(string name)
+    // {
+    //     var pet = _pets.FirstOrDefault(p => p.PetName.Equals(name));
+    //     List<Visit> tempListVisits = new List<Visit>();
+    //     for (int i = 0; i < _visits.Count; i++)
+    //     {
+    //         if (_visits[i].VisPet.PetName.Equals(pet.PetName))
+    //         {
+    //             tempListVisits.Add(_visits[i]);
+    //         }
+    //     }
+    //     return Ok(tempListVisits);
+    // }
+    
+    [HttpPost]
+    public IActionResult AddVisit(Visit visit)
+    {
+        _visits.Add(visit);
+        return StatusCode(StatusCodes.Status201Created);
+    }
+    
     [HttpGet]
     public IActionResult GetPets()
     {
@@ -67,5 +94,9 @@ public class PetController : ControllerBase
         return NoContent();
     }
 
+    public List<Pet> GetList()
+    {
+        return _pets;
+    }
 
 }
