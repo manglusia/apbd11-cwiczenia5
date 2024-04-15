@@ -15,10 +15,10 @@ public class PetController : ControllerBase
         new Pet {IdPet = 3, PetName = "Wargas", HairColor = "Black", PetCategory = "Dog", Weight = 45.0}
     };
     
-    private static List<Visit> _visits = new()
-    {
-        new Visit { VisitDate = "24-10-2003", VisPet = _pets[0], VisitCost = 100.0, VisitDescription = "Everthings good"}
-    };
+    // private static List<Visit> _visits = new()
+    // {
+    //     new Visit { VisitDate = "24-10-2003", VisPet = _pets[0], VisitCost = 100.0, VisitDescription = "Everthings good"}
+    // };
     
     // [HttpGet]
     // public IActionResult GetVisit(string name)
@@ -35,12 +35,12 @@ public class PetController : ControllerBase
     //     return Ok(tempListVisits);
     // }
     
-    [HttpPost]
-    public IActionResult AddVisit(Visit visit)
-    {
-        _visits.Add(visit);
-        return StatusCode(StatusCodes.Status201Created);
-    }
+    // [HttpPost]
+    // public IActionResult AddVisit(Visit visit)
+    // {
+    //     _visits.Add(visit);
+    //     return StatusCode(StatusCodes.Status201Created);
+    // }
     
     [HttpGet]
     public IActionResult GetPets()
